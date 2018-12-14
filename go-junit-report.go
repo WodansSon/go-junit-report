@@ -15,6 +15,7 @@ var (
 	goVersionFlag string
 	setExitCode   bool
 	formatJSON    bool
+	parseAzure    bool
 )
 
 func init() {
@@ -23,13 +24,14 @@ func init() {
 	flag.StringVar(&goVersionFlag, "go-version", "", "specify the value to use for the go.version property in the generated XML")
 	flag.BoolVar(&setExitCode, "set-exit-code", false, "set exit code to 1 if tests failed")
 	flag.BoolVar(&formatJSON, "format-json", false, "save detailed run data as a Json file")
+	flag.BoolVar(&parseAzure, "parse-azure-pipeline", false, "parse the log in the azure pipeline log format")
 }
 
 func main() {
 	flag.Parse()
 
 	// Read input
-	report, err := parser.Parse(os.Stdin, packageName)
+	report, err := parser.Parse(os.Stdin, packageName, parseAzure)
 	if err != nil {
 		fmt.Printf("Error reading input: %s\n", err)
 		os.Exit(1)

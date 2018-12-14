@@ -1,0 +1,1345 @@
+2018-12-13T05:01:56.1780194Z ##[debug]Evaluating condition for step: 'Run test in parallel'
+2018-12-13T05:01:56.1780787Z ##[debug]Evaluating: SucceededNode()
+2018-12-13T05:01:56.1781020Z ##[debug]Evaluating SucceededNode:
+2018-12-13T05:01:56.1781366Z ##[debug]=> True
+2018-12-13T05:01:56.1781598Z ##[debug]Result: True
+2018-12-13T05:01:56.1781826Z ##[section]Starting: Run test in parallel
+2018-12-13T05:01:56.1785587Z ==============================================================================
+2018-12-13T05:01:56.1785712Z Task         : Bash
+2018-12-13T05:01:56.1785836Z Description  : Run a Bash script on macOS, Linux, or Windows
+2018-12-13T05:01:56.1785941Z Version      : 3.142.2
+2018-12-13T05:01:56.1786059Z Author       : Microsoft Corporation
+2018-12-13T05:01:56.1786169Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkID=613738)
+2018-12-13T05:01:56.1786284Z ==============================================================================
+2018-12-13T05:01:56.2999582Z ##[debug]agent.TempDirectory=/mnt/a/_temp
+2018-12-13T05:01:56.3024869Z ##[debug]loading inputs and endpoints
+2018-12-13T05:01:56.3028677Z ##[debug]loading INPUT_TARGETTYPE
+2018-12-13T05:01:56.3039118Z ##[debug]loading INPUT_FILEPATH
+2018-12-13T05:01:56.3039742Z ##[debug]loading INPUT_SCRIPT
+2018-12-13T05:01:56.3041538Z ##[debug]loading INPUT_WORKINGDIRECTORY
+2018-12-13T05:01:56.3042172Z ##[debug]loading INPUT_FAILONSTDERR
+2018-12-13T05:01:56.3042845Z ##[debug]loading ENDPOINT_AUTH_SYSTEMVSSCONNECTION
+2018-12-13T05:01:56.3043489Z ##[debug]loading ENDPOINT_AUTH_SCHEME_SYSTEMVSSCONNECTION
+2018-12-13T05:01:56.3047870Z ##[debug]loading ENDPOINT_AUTH_PARAMETER_SYSTEMVSSCONNECTION_ACCESSTOKEN
+2018-12-13T05:01:56.3050256Z ##[debug]loading SECRET_ARM_CLIENT_ID
+2018-12-13T05:01:56.3051258Z ##[debug]loading SECRET_SYSTEM_ACCESSTOKEN
+2018-12-13T05:01:56.3052313Z ##[debug]loading SECRET_ARM_CLIENT_SECRET
+2018-12-13T05:01:56.3053351Z ##[debug]loading SECRET_ARM_SUBSCRIPTION_ID
+2018-12-13T05:01:56.3054499Z ##[debug]loading SECRET_ARM_TENANT_ID
+2018-12-13T05:01:56.3056477Z ##[debug]loaded 13
+2018-12-13T05:01:56.3070035Z ##[debug]Agent.ProxyUrl=undefined
+2018-12-13T05:01:56.3070474Z ##[debug]Agent.CAInfo=undefined
+2018-12-13T05:01:56.3070739Z ##[debug]Agent.ClientCert=undefined
+2018-12-13T05:01:56.3071047Z ##[debug]Agent.SkipCertValidation=undefined
+2018-12-13T05:01:56.3085901Z ##[debug]check path : /mnt/a/_tasks/Bash_6c731c3c-3c68-459a-a5c9-bde6e6595b5b/3.142.2/task.json
+2018-12-13T05:01:56.3087267Z ##[debug]adding resource file: /mnt/a/_tasks/Bash_6c731c3c-3c68-459a-a5c9-bde6e6595b5b/3.142.2/task.json
+2018-12-13T05:01:56.3088060Z ##[debug]system.culture=en-US
+2018-12-13T05:01:56.3105418Z ##[debug]failOnStderr=false
+2018-12-13T05:01:56.3111414Z ##[debug]workingDirectory=/mnt/a/1/s/20181212.1/go/src/github.com/terraform-providers/terraform-provider-azurerm
+2018-12-13T05:01:56.3112142Z ##[debug]check path : /mnt/a/1/s/20181212.1/go/src/github.com/terraform-providers/terraform-provider-azurerm
+2018-12-13T05:01:56.3112521Z ##[debug]targetType=inline
+2018-12-13T05:01:56.3113164Z ##[debug]script=if [ -d ./azurerm/testdata ]
+then
+  cp -f -r ./azurerm/testdata ./results/testdata
+fi
+
+cd results
+
+cat test_run_list.txt | TF_ACC=1 parallel-go-test -f ../azurerm/test-azurerm -p 20 -t 5000s | tee parallel_test_results.txt
+cat parallel_test_results.txt | go-junit-report --package-name azurerm > parallel_test_junit_report.xml
+2018-12-13T05:01:56.3152702Z Generating script.
+2018-12-13T05:01:56.3155578Z ##[debug]which 'bash'
+2018-12-13T05:01:56.3162477Z ##[debug]found: '/bin/bash'
+2018-12-13T05:01:56.3163230Z ##[debug]which 'bash'
+2018-12-13T05:01:56.3163833Z ##[debug]found: '/bin/bash'
+2018-12-13T05:01:56.3164207Z ##[debug]Agent.Version=2.144.0
+2018-12-13T05:01:56.3164988Z ##[debug]agent.tempDirectory=/mnt/a/_temp
+2018-12-13T05:01:56.3165354Z ##[debug]check path : /mnt/a/_temp
+2018-12-13T05:01:56.3186216Z ##[debug]which '/bin/bash'
+2018-12-13T05:01:56.3186901Z ##[debug]found: '/bin/bash'
+2018-12-13T05:01:56.3187458Z ##[debug]which '/bin/bash'
+2018-12-13T05:01:56.3187931Z ##[debug]found: '/bin/bash'
+2018-12-13T05:01:56.3189646Z ##[debug]/bin/bash arg: --noprofile
+2018-12-13T05:01:56.3190217Z ##[debug]/bin/bash arg: --norc
+2018-12-13T05:01:56.3190730Z ##[debug]/bin/bash arg: /mnt/a/_temp/b4f01c13-7cf7-467c-81f0-aa3b681e2c9c.sh
+2018-12-13T05:01:56.3196705Z ##[debug]exec tool: /bin/bash
+2018-12-13T05:01:56.3197091Z ##[debug]arguments:
+2018-12-13T05:01:56.3197699Z ##[debug]   --noprofile
+2018-12-13T05:01:56.3198171Z ##[debug]   --norc
+2018-12-13T05:01:56.3198685Z ##[debug]   /mnt/a/_temp/b4f01c13-7cf7-467c-81f0-aa3b681e2c9c.sh
+2018-12-13T05:01:56.3202793Z [command]/bin/bash --noprofile --norc /mnt/a/_temp/b4f01c13-7cf7-467c-81f0-aa3b681e2c9c.sh
+2018-12-13T05:03:06.3991859Z === RUN   TestAccAzureRMApplicationInsights_basicJava
+2018-12-13T05:03:06.3992519Z === PAUSE TestAccAzureRMApplicationInsights_basicJava
+2018-12-13T05:03:06.3992667Z === CONT  TestAccAzureRMApplicationInsights_basicJava
+2018-12-13T05:03:06.3992951Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:06.3993104Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.3993337Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:06.3997327Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.3997687Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.3997875Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4000366Z 2018/12/13 05:02:00 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:06.4001073Z 
+2018-12-13T05:03:06.4001250Z CREATE: azurerm_application_insights.test
+2018-12-13T05:03:06.4005394Z   app_id:              "" => "<computed>"
+2018-12-13T05:03:06.4006634Z   application_type:    "" => "java" (forces new resource)
+2018-12-13T05:03:06.4008132Z   instrumentation_key: "<sensitive>" => "<sensitive>" (attribute changed)
+2018-12-13T05:03:06.4009884Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:06.4013706Z   name:                "" => "acctestappinsights-1554951082661972946" (forces new resource)
+2018-12-13T05:03:06.4016011Z   resource_group_name: "" => "acctestRG-1554951082661972946" (forces new resource)
+2018-12-13T05:03:06.4016265Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:06.4016394Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:06.4016544Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:06.4016955Z   name:     "" => "acctestRG-1554951082661972946" (forces new resource)
+2018-12-13T05:03:06.4017146Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:06.4017257Z 
+2018-12-13T05:03:06.4017375Z STATE:
+2018-12-13T05:03:06.4017476Z 
+2018-12-13T05:03:06.4017611Z <no state>
+2018-12-13T05:03:06.4017738Z 2018/12/13 05:02:00 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:06.4017911Z 2018/12/13 05:02:00 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.4018063Z 2018/12/13 05:02:00 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.4018217Z 2018/12/13 05:02:00 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4018355Z 2018/12/13 05:02:03 [INFO] preparing arguments for AzureRM Application Insights creation.
+2018-12-13T05:03:06.4018489Z 2018/12/13 05:02:06 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:06.4018655Z 2018/12/13 05:02:06 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.4018793Z 2018/12/13 05:02:06 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.4018950Z 2018/12/13 05:02:06 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4019161Z 2018/12/13 05:02:08 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.4019339Z 2018/12/13 05:02:08 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.4019602Z 2018/12/13 05:02:08 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.4019759Z 2018/12/13 05:02:08 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4019894Z 2018/12/13 05:02:10 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:06.4020026Z 2018/12/13 05:02:10 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.4020185Z 2018/12/13 05:02:10 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.4020318Z 2018/12/13 05:02:10 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4020473Z 2018/12/13 05:02:11 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.4020610Z 2018/12/13 05:02:11 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.4020855Z 2018/12/13 05:02:11 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4020989Z 2018/12/13 05:02:13 [WARN] Test: Executing destroy step
+2018-12-13T05:03:06.4021119Z 2018/12/13 05:02:13 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:06.4021268Z 2018/12/13 05:02:13 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.4021403Z 2018/12/13 05:02:13 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.4021559Z 2018/12/13 05:02:13 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.4021693Z 2018/12/13 05:02:13 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4021844Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:06.4021974Z 2018/12/13 05:02:15 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:06.4022088Z 
+2018-12-13T05:03:06.4022227Z DESTROY: azurerm_application_insights.test
+2018-12-13T05:03:06.4022359Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:06.4022460Z 
+2018-12-13T05:03:06.4022594Z STATE:
+2018-12-13T05:03:06.4022692Z 
+2018-12-13T05:03:06.4022806Z azurerm_application_insights.test:
+2018-12-13T05:03:06.4023500Z   ID = /subscriptions/***/resourceGroups/acctestRG-1554951082661972946/providers/microsoft.insights/components/acctestappinsights-1554951082661972946
+2018-12-13T05:03:06.4026236Z   provider = provider.azurerm
+2018-12-13T05:03:06.4027165Z   app_id = 19c555f0-a31c-46fe-ac08-6496cbdf873d
+2018-12-13T05:03:06.4027520Z   application_type = java
+2018-12-13T05:03:06.4027968Z   instrumentation_key = cc83419b-843c-4801-8928-5834d769fd49
+2018-12-13T05:03:06.4028165Z   location = westeurope
+2018-12-13T05:03:06.4028537Z   name = acctestappinsights-1554951082661972946
+2018-12-13T05:03:06.4028935Z   resource_group_name = acctestRG-1554951082661972946
+2018-12-13T05:03:06.4029132Z   tags.% = 0
+2018-12-13T05:03:06.4029237Z 
+2018-12-13T05:03:06.4029373Z   Dependencies:
+2018-12-13T05:03:06.4029506Z     azurerm_resource_group.test
+2018-12-13T05:03:06.4029626Z azurerm_resource_group.test:
+2018-12-13T05:03:06.4030139Z   ID = /subscriptions/***/resourceGroups/acctestRG-1554951082661972946
+2018-12-13T05:03:06.4030322Z   provider = provider.azurerm
+2018-12-13T05:03:06.4030468Z   location = westeurope
+2018-12-13T05:03:06.4030826Z   name = acctestRG-1554951082661972946
+2018-12-13T05:03:06.4031013Z   tags.% = 0
+2018-12-13T05:03:06.4032234Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:06.4032382Z 2018/12/13 05:02:15 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.4032559Z 2018/12/13 05:02:15 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.4032695Z 2018/12/13 05:02:15 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.4032862Z 2018/12/13 05:03:06 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:06.4033715Z 2018/12/13 05:03:06 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.4033873Z 2018/12/13 05:03:06 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:06.4034341Z --- PASS: TestAccAzureRMApplicationInsights_basicJava (69.47s)
+2018-12-13T05:03:06.4034511Z PASS
+2018-12-13T05:03:06.5230361Z === RUN   TestAccAzureRMApplicationInsights_basicOther
+2018-12-13T05:03:06.5232118Z === PAUSE TestAccAzureRMApplicationInsights_basicOther
+2018-12-13T05:03:06.5232788Z === CONT  TestAccAzureRMApplicationInsights_basicOther
+2018-12-13T05:03:06.5233153Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:06.5233354Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.5233591Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:06.5233775Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5234091Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5234996Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5235144Z 2018/12/13 05:01:59 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:06.5235282Z 
+2018-12-13T05:03:06.5235404Z CREATE: azurerm_application_insights.test
+2018-12-13T05:03:06.5235527Z   app_id:              "" => "<computed>"
+2018-12-13T05:03:06.5235670Z   application_type:    "" => "other" (forces new resource)
+2018-12-13T05:03:06.5235800Z   instrumentation_key: "<sensitive>" => "<sensitive>" (attribute changed)
+2018-12-13T05:03:06.5235954Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:06.5236874Z   name:                "" => "acctestappinsights-5551678470097199546" (forces new resource)
+2018-12-13T05:03:06.5237843Z   resource_group_name: "" => "acctestRG-5551678470097199546" (forces new resource)
+2018-12-13T05:03:06.5238350Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:06.5238514Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:06.5238680Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:06.5239361Z   name:     "" => "acctestRG-5551678470097199546" (forces new resource)
+2018-12-13T05:03:06.5239588Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:06.5239707Z 
+2018-12-13T05:03:06.5239830Z STATE:
+2018-12-13T05:03:06.5239953Z 
+2018-12-13T05:03:06.5240077Z <no state>
+2018-12-13T05:03:06.5240209Z 2018/12/13 05:01:59 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:06.5240383Z 2018/12/13 05:01:59 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5240532Z 2018/12/13 05:01:59 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5240696Z 2018/12/13 05:01:59 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5240853Z 2018/12/13 05:02:02 [INFO] preparing arguments for AzureRM Application Insights creation.
+2018-12-13T05:03:06.5241002Z 2018/12/13 05:02:06 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:06.5241167Z 2018/12/13 05:02:06 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5241314Z 2018/12/13 05:02:06 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5241479Z 2018/12/13 05:02:06 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5241618Z 2018/12/13 05:02:07 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.5241788Z 2018/12/13 05:02:07 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5242002Z 2018/12/13 05:02:07 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5242178Z 2018/12/13 05:02:07 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5242331Z 2018/12/13 05:02:09 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:06.5242573Z 2018/12/13 05:02:09 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5242744Z 2018/12/13 05:02:09 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5242888Z 2018/12/13 05:02:09 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5243054Z 2018/12/13 05:02:11 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5243197Z 2018/12/13 05:02:11 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5243359Z 2018/12/13 05:02:11 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5243497Z 2018/12/13 05:02:13 [WARN] Test: Executing destroy step
+2018-12-13T05:03:06.5243635Z 2018/12/13 05:02:13 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:06.5243888Z 2018/12/13 05:02:13 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.5244039Z 2018/12/13 05:02:13 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5244203Z 2018/12/13 05:02:13 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5244341Z 2018/12/13 05:02:13 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5244549Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:06.5245077Z 2018/12/13 05:02:15 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:06.5245208Z 
+2018-12-13T05:03:06.5245390Z DESTROY: azurerm_application_insights.test
+2018-12-13T05:03:06.5245516Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:06.5245618Z 
+2018-12-13T05:03:06.5245750Z STATE:
+2018-12-13T05:03:06.5245847Z 
+2018-12-13T05:03:06.5245961Z azurerm_application_insights.test:
+2018-12-13T05:03:06.5246724Z   ID = /subscriptions/***/resourceGroups/acctestRG-5551678470097199546/providers/microsoft.insights/components/acctestappinsights-5551678470097199546
+2018-12-13T05:03:06.5246964Z   provider = provider.azurerm
+2018-12-13T05:03:06.5247374Z   app_id = 0ad9ab95-9afc-4f7a-b525-ca6570512e98
+2018-12-13T05:03:06.5247543Z   application_type = other
+2018-12-13T05:03:06.5247962Z   instrumentation_key = 417c085c-0fae-4eaa-a118-50e1c4568dc6
+2018-12-13T05:03:06.5248188Z   location = westeurope
+2018-12-13T05:03:06.5248602Z   name = acctestappinsights-5551678470097199546
+2018-12-13T05:03:06.5249008Z   resource_group_name = acctestRG-5551678470097199546
+2018-12-13T05:03:06.5249170Z   tags.% = 0
+2018-12-13T05:03:06.5249298Z 
+2018-12-13T05:03:06.5249414Z   Dependencies:
+2018-12-13T05:03:06.5249755Z     azurerm_resource_group.test
+2018-12-13T05:03:06.5249883Z azurerm_resource_group.test:
+2018-12-13T05:03:06.5250393Z   ID = /subscriptions/***/resourceGroups/acctestRG-5551678470097199546
+2018-12-13T05:03:06.5250607Z   provider = provider.azurerm
+2018-12-13T05:03:06.5250730Z   location = westeurope
+2018-12-13T05:03:06.5251132Z   name = acctestRG-5551678470097199546
+2018-12-13T05:03:06.5251295Z   tags.% = 0
+2018-12-13T05:03:06.5251421Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:06.5251586Z 2018/12/13 05:02:15 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:06.5251727Z 2018/12/13 05:02:15 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:06.5251886Z 2018/12/13 05:02:15 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:06.5252019Z 2018/12/13 05:03:06 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:06.5252173Z 2018/12/13 05:03:06 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:06.5252304Z 2018/12/13 05:03:06 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:06.5252727Z --- PASS: TestAccAzureRMApplicationInsights_basicOther (69.58s)
+2018-12-13T05:03:06.5252989Z PASS
+2018-12-13T05:03:07.3630023Z === RUN   TestAccAzureRMApplicationInsights_basicWeb
+2018-12-13T05:03:07.3631031Z === PAUSE TestAccAzureRMApplicationInsights_basicWeb
+2018-12-13T05:03:07.3631236Z === CONT  TestAccAzureRMApplicationInsights_basicWeb
+2018-12-13T05:03:07.3631368Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:07.3631520Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.3631648Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.3631870Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3632018Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3632163Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3632387Z 2018/12/13 05:01:59 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:07.3632826Z 
+2018-12-13T05:03:07.3633005Z CREATE: azurerm_application_insights.test
+2018-12-13T05:03:07.3633129Z   app_id:              "" => "<computed>"
+2018-12-13T05:03:07.3633248Z   application_type:    "" => "web" (forces new resource)
+2018-12-13T05:03:07.3633390Z   instrumentation_key: "<sensitive>" => "<sensitive>" (attribute changed)
+2018-12-13T05:03:07.3633517Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:07.3639128Z   name:                "" => "acctestappinsights-2785742387456854311" (forces new resource)
+2018-12-13T05:03:07.3639880Z   resource_group_name: "" => "acctestRG-2785742387456854311" (forces new resource)
+2018-12-13T05:03:07.3640129Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:07.3640248Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:07.3640362Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:07.3640789Z   name:     "" => "acctestRG-2785742387456854311" (forces new resource)
+2018-12-13T05:03:07.3640960Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:07.3641089Z 
+2018-12-13T05:03:07.3641197Z STATE:
+2018-12-13T05:03:07.3641285Z 
+2018-12-13T05:03:07.3641402Z <no state>
+2018-12-13T05:03:07.3641518Z 2018/12/13 05:01:59 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:07.3641771Z 2018/12/13 05:01:59 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3641944Z 2018/12/13 05:01:59 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3642066Z 2018/12/13 05:01:59 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3642204Z 2018/12/13 05:02:03 [INFO] preparing arguments for AzureRM Application Insights creation.
+2018-12-13T05:03:07.3642321Z 2018/12/13 05:02:07 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.3642458Z 2018/12/13 05:02:07 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3642591Z 2018/12/13 05:02:07 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3642754Z 2018/12/13 05:02:07 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3643103Z 2018/12/13 05:02:08 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.3643435Z 2018/12/13 05:02:08 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3644039Z 2018/12/13 05:02:08 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3644472Z 2018/12/13 05:02:08 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3644602Z 2018/12/13 05:02:10 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.3644756Z 2018/12/13 05:02:10 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3644879Z 2018/12/13 05:02:10 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3645388Z 2018/12/13 05:02:10 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3645515Z 2018/12/13 05:02:12 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3645656Z 2018/12/13 05:02:12 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3645952Z 2018/12/13 05:02:12 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3646104Z 2018/12/13 05:02:14 [WARN] Test: Executing destroy step
+2018-12-13T05:03:07.3646219Z 2018/12/13 05:02:14 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:07.3646351Z 2018/12/13 05:02:14 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.3646473Z 2018/12/13 05:02:14 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3646772Z 2018/12/13 05:02:14 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3647047Z 2018/12/13 05:02:14 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3647162Z 2018/12/13 05:02:16 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.3647293Z 2018/12/13 05:02:16 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:07.3647609Z 
+2018-12-13T05:03:07.3647716Z DESTROY: azurerm_application_insights.test
+2018-12-13T05:03:07.3647923Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:07.3648014Z 
+2018-12-13T05:03:07.3648112Z STATE:
+2018-12-13T05:03:07.3648216Z 
+2018-12-13T05:03:07.3648316Z azurerm_application_insights.test:
+2018-12-13T05:03:07.3649005Z   ID = /subscriptions/***/resourceGroups/acctestRG-2785742387456854311/providers/microsoft.insights/components/acctestappinsights-2785742387456854311
+2018-12-13T05:03:07.3649194Z   provider = provider.azurerm
+2018-12-13T05:03:07.3649771Z   app_id = 31e3744a-eeff-4dd1-89d4-a5278657de2e
+2018-12-13T05:03:07.3649959Z   application_type = web
+2018-12-13T05:03:07.3650302Z   instrumentation_key = 6926a816-c4b9-4b52-a827-e5a2791d9392
+2018-12-13T05:03:07.3650484Z   location = westeurope
+2018-12-13T05:03:07.3650802Z   name = acctestappinsights-2785742387456854311
+2018-12-13T05:03:07.3651180Z   resource_group_name = acctestRG-2785742387456854311
+2018-12-13T05:03:07.3651324Z   tags.% = 0
+2018-12-13T05:03:07.3651415Z 
+2018-12-13T05:03:07.3651585Z   Dependencies:
+2018-12-13T05:03:07.3651691Z     azurerm_resource_group.test
+2018-12-13T05:03:07.3651815Z azurerm_resource_group.test:
+2018-12-13T05:03:07.3652242Z   ID = /subscriptions/***/resourceGroups/acctestRG-2785742387456854311
+2018-12-13T05:03:07.3652416Z   provider = provider.azurerm
+2018-12-13T05:03:07.3652526Z   location = westeurope
+2018-12-13T05:03:07.3652841Z   name = acctestRG-2785742387456854311
+2018-12-13T05:03:07.3653003Z   tags.% = 0
+2018-12-13T05:03:07.3653116Z 2018/12/13 05:02:16 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:07.3653263Z 2018/12/13 05:02:16 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.3653396Z 2018/12/13 05:02:16 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.3653517Z 2018/12/13 05:02:16 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.3653652Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.3653770Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.3653902Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.3654238Z --- PASS: TestAccAzureRMApplicationInsights_basicWeb (70.29s)
+2018-12-13T05:03:07.3654402Z PASS
+2018-12-13T05:03:07.7669365Z === RUN   TestAccAzureRMApplicationInsights_basicMobileCenter
+2018-12-13T05:03:07.7670021Z === PAUSE TestAccAzureRMApplicationInsights_basicMobileCenter
+2018-12-13T05:03:07.7670186Z === CONT  TestAccAzureRMApplicationInsights_basicMobileCenter
+2018-12-13T05:03:07.7670364Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:07.7670627Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.7670782Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.7670918Z 2018/12/13 05:01:56 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7671089Z 2018/12/13 05:01:56 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7671228Z 2018/12/13 05:01:56 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7671376Z 2018/12/13 05:02:00 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:07.7671484Z 
+2018-12-13T05:03:07.7671607Z CREATE: azurerm_application_insights.test
+2018-12-13T05:03:07.7672093Z   app_id:              "" => "<computed>"
+2018-12-13T05:03:07.7672256Z   application_type:    "" => "MobileCenter" (forces new resource)
+2018-12-13T05:03:07.7672494Z   instrumentation_key: "<sensitive>" => "<sensitive>" (attribute changed)
+2018-12-13T05:03:07.7672655Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:07.7674009Z   name:                "" => "acctestappinsights-3222204756093601280" (forces new resource)
+2018-12-13T05:03:07.7674627Z   resource_group_name: "" => "acctestRG-3222204756093601280" (forces new resource)
+2018-12-13T05:03:07.7674829Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:07.7674988Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:07.7675191Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:07.7675776Z   name:     "" => "acctestRG-3222204756093601280" (forces new resource)
+2018-12-13T05:03:07.7675990Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:07.7676192Z 
+2018-12-13T05:03:07.7676315Z STATE:
+2018-12-13T05:03:07.7676442Z 
+2018-12-13T05:03:07.7676563Z <no state>
+2018-12-13T05:03:07.7676694Z 2018/12/13 05:02:00 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:07.7676872Z 2018/12/13 05:02:00 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7677031Z 2018/12/13 05:02:00 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7677193Z 2018/12/13 05:02:00 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7677336Z 2018/12/13 05:02:03 [INFO] preparing arguments for AzureRM Application Insights creation.
+2018-12-13T05:03:07.7677493Z 2018/12/13 05:02:08 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.7677637Z 2018/12/13 05:02:08 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7677804Z 2018/12/13 05:02:08 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7677949Z 2018/12/13 05:02:08 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7678099Z 2018/12/13 05:02:10 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.7678269Z 2018/12/13 05:02:10 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7678417Z 2018/12/13 05:02:10 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7678578Z 2018/12/13 05:02:10 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7678717Z 2018/12/13 05:02:11 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.7678877Z 2018/12/13 05:02:11 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7679026Z 2018/12/13 05:02:11 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7679186Z 2018/12/13 05:02:11 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7679333Z 2018/12/13 05:02:13 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7679488Z 2018/12/13 05:02:13 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7679743Z 2018/12/13 05:02:13 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7679881Z 2018/12/13 05:02:15 [WARN] Test: Executing destroy step
+2018-12-13T05:03:07.7680096Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:07.7680241Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.7680451Z 2018/12/13 05:02:15 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7680599Z 2018/12/13 05:02:15 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7680744Z 2018/12/13 05:02:15 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7680902Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.7681107Z 2018/12/13 05:02:17 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:07.7681248Z 
+2018-12-13T05:03:07.7681375Z DESTROY: azurerm_application_insights.test
+2018-12-13T05:03:07.7681505Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:07.7681629Z 
+2018-12-13T05:03:07.7681746Z STATE:
+2018-12-13T05:03:07.7681848Z 
+2018-12-13T05:03:07.7681995Z azurerm_application_insights.test:
+2018-12-13T05:03:07.7682708Z   ID = /subscriptions/***/resourceGroups/acctestRG-3222204756093601280/providers/microsoft.insights/components/acctestappinsights-3222204756093601280
+2018-12-13T05:03:07.7682935Z   provider = provider.azurerm
+2018-12-13T05:03:07.7683353Z   app_id = 4637a336-54d9-40a7-9472-733b34b658e0
+2018-12-13T05:03:07.7683541Z   application_type = MobileCenter
+2018-12-13T05:03:07.7683949Z   instrumentation_key = b76898f7-9b43-4a09-82e4-e236f198be02
+2018-12-13T05:03:07.7684132Z   location = westeurope
+2018-12-13T05:03:07.7684514Z   name = acctestappinsights-3222204756093601280
+2018-12-13T05:03:07.7685027Z   resource_group_name = acctestRG-3222204756093601280
+2018-12-13T05:03:07.7685238Z   tags.% = 0
+2018-12-13T05:03:07.7685342Z 
+2018-12-13T05:03:07.7685799Z   Dependencies:
+2018-12-13T05:03:07.7686051Z     azurerm_resource_group.test
+2018-12-13T05:03:07.7686169Z azurerm_resource_group.test:
+2018-12-13T05:03:07.7687174Z   ID = /subscriptions/***/resourceGroups/acctestRG-3222204756093601280
+2018-12-13T05:03:07.7687396Z   provider = provider.azurerm
+2018-12-13T05:03:07.7687525Z   location = westeurope
+2018-12-13T05:03:07.7687897Z   name = acctestRG-3222204756093601280
+2018-12-13T05:03:07.7688052Z   tags.% = 0
+2018-12-13T05:03:07.7688190Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:07.7688314Z 2018/12/13 05:02:17 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.7688530Z 2018/12/13 05:02:17 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.7688674Z 2018/12/13 05:02:17 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.7688804Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.7688943Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.7689060Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.7689460Z --- PASS: TestAccAzureRMApplicationInsights_basicMobileCenter (70.88s)
+2018-12-13T05:03:07.7689609Z PASS
+2018-12-13T05:03:07.9125789Z === RUN   TestAccAzureRMApplicationInsights_basicStore
+2018-12-13T05:03:07.9127044Z === PAUSE TestAccAzureRMApplicationInsights_basicStore
+2018-12-13T05:03:07.9127451Z === CONT  TestAccAzureRMApplicationInsights_basicStore
+2018-12-13T05:03:07.9127693Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:07.9127849Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.9128021Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.9128186Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9128618Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9128828Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9129009Z 2018/12/13 05:02:00 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:07.9129127Z 
+2018-12-13T05:03:07.9129255Z CREATE: azurerm_application_insights.test
+2018-12-13T05:03:07.9129411Z   app_id:              "" => "<computed>"
+2018-12-13T05:03:07.9129864Z   application_type:    "" => "store" (forces new resource)
+2018-12-13T05:03:07.9130102Z   instrumentation_key: "<sensitive>" => "<sensitive>" (attribute changed)
+2018-12-13T05:03:07.9130261Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:07.9131150Z   name:                "" => "acctestappinsights-5376632169440480074" (forces new resource)
+2018-12-13T05:03:07.9131820Z   resource_group_name: "" => "acctestRG-5376632169440480074" (forces new resource)
+2018-12-13T05:03:07.9132023Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:07.9132195Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:07.9132329Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:07.9132784Z   name:     "" => "acctestRG-5376632169440480074" (forces new resource)
+2018-12-13T05:03:07.9133021Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:07.9133139Z 
+2018-12-13T05:03:07.9133283Z STATE:
+2018-12-13T05:03:07.9133392Z 
+2018-12-13T05:03:07.9133515Z <no state>
+2018-12-13T05:03:07.9133664Z 2018/12/13 05:02:00 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:07.9133813Z 2018/12/13 05:02:00 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9133960Z 2018/12/13 05:02:00 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9134134Z 2018/12/13 05:02:00 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9134284Z 2018/12/13 05:02:03 [INFO] preparing arguments for AzureRM Application Insights creation.
+2018-12-13T05:03:07.9134446Z 2018/12/13 05:02:07 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.9134591Z 2018/12/13 05:02:07 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9139686Z 2018/12/13 05:02:07 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9139850Z 2018/12/13 05:02:07 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9140008Z 2018/12/13 05:02:09 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.9140149Z 2018/12/13 05:02:09 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9140286Z 2018/12/13 05:02:09 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9140450Z 2018/12/13 05:02:09 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9140590Z 2018/12/13 05:02:11 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:07.9141017Z 2018/12/13 05:02:11 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9141161Z 2018/12/13 05:02:11 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9141314Z 2018/12/13 05:02:11 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9141450Z 2018/12/13 05:02:13 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9141647Z 2018/12/13 05:02:13 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9141789Z 2018/12/13 05:02:13 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9144695Z 2018/12/13 05:02:15 [WARN] Test: Executing destroy step
+2018-12-13T05:03:07.9145217Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:07.9145457Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.9145651Z 2018/12/13 05:02:15 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9145794Z 2018/12/13 05:02:15 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9145946Z 2018/12/13 05:02:15 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9146078Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.9146205Z 2018/12/13 05:02:17 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:07.9146330Z 
+2018-12-13T05:03:07.9146449Z DESTROY: azurerm_application_insights.test
+2018-12-13T05:03:07.9146571Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:07.9146689Z 
+2018-12-13T05:03:07.9146872Z STATE:
+2018-12-13T05:03:07.9146970Z 
+2018-12-13T05:03:07.9147104Z azurerm_application_insights.test:
+2018-12-13T05:03:07.9147874Z   ID = /subscriptions/***/resourceGroups/acctestRG-5376632169440480074/providers/microsoft.insights/components/acctestappinsights-5376632169440480074
+2018-12-13T05:03:07.9148110Z   provider = provider.azurerm
+2018-12-13T05:03:07.9148518Z   app_id = cd9d70c6-6330-48be-ab06-e35716b88b75
+2018-12-13T05:03:07.9148709Z   application_type = store
+2018-12-13T05:03:07.9149096Z   instrumentation_key = 6f643382-5475-4cad-ade1-55dc47a503be
+2018-12-13T05:03:07.9149285Z   location = westeurope
+2018-12-13T05:03:07.9149651Z   name = acctestappinsights-5376632169440480074
+2018-12-13T05:03:07.9150046Z   resource_group_name = acctestRG-5376632169440480074
+2018-12-13T05:03:07.9150227Z   tags.% = 0
+2018-12-13T05:03:07.9150331Z 
+2018-12-13T05:03:07.9150447Z   Dependencies:
+2018-12-13T05:03:07.9150586Z     azurerm_resource_group.test
+2018-12-13T05:03:07.9150708Z azurerm_resource_group.test:
+2018-12-13T05:03:07.9151213Z   ID = /subscriptions/***/resourceGroups/acctestRG-5376632169440480074
+2018-12-13T05:03:07.9151397Z   provider = provider.azurerm
+2018-12-13T05:03:07.9151541Z   location = westeurope
+2018-12-13T05:03:07.9151902Z   name = acctestRG-5376632169440480074
+2018-12-13T05:03:07.9152064Z   tags.% = 0
+2018-12-13T05:03:07.9152213Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:07.9152351Z 2018/12/13 05:02:17 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:07.9152513Z 2018/12/13 05:02:17 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:07.9152704Z 2018/12/13 05:02:17 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:07.9152864Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.9152998Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:07.9153140Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:07.9153568Z --- PASS: TestAccAzureRMApplicationInsights_basicStore (70.84s)
+2018-12-13T05:03:07.9153733Z PASS
+2018-12-13T05:03:08.4522162Z === RUN   TestAccAzureRMApplicationInsights_basicPhone
+2018-12-13T05:03:08.4523034Z === PAUSE TestAccAzureRMApplicationInsights_basicPhone
+2018-12-13T05:03:08.4523238Z === CONT  TestAccAzureRMApplicationInsights_basicPhone
+2018-12-13T05:03:08.4523361Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:08.4523509Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:08.4523631Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:08.4523773Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4523966Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4524133Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4524403Z 2018/12/13 05:01:59 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:08.4524501Z 
+2018-12-13T05:03:08.4524930Z CREATE: azurerm_application_insights.test
+2018-12-13T05:03:08.4525071Z   app_id:              "" => "<computed>"
+2018-12-13T05:03:08.4525185Z   application_type:    "" => "phone" (forces new resource)
+2018-12-13T05:03:08.4525326Z   instrumentation_key: "<sensitive>" => "<sensitive>" (attribute changed)
+2018-12-13T05:03:08.4525444Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:08.4526612Z   name:                "" => "acctestappinsights-4590834492582371236" (forces new resource)
+2018-12-13T05:03:08.4527209Z   resource_group_name: "" => "acctestRG-4590834492582371236" (forces new resource)
+2018-12-13T05:03:08.4527414Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:08.4527594Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:08.4527972Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:08.4528403Z   name:     "" => "acctestRG-4590834492582371236" (forces new resource)
+2018-12-13T05:03:08.4528590Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:08.4528690Z 
+2018-12-13T05:03:08.4528795Z STATE:
+2018-12-13T05:03:08.4528883Z 
+2018-12-13T05:03:08.4529007Z <no state>
+2018-12-13T05:03:08.4529120Z 2018/12/13 05:01:59 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:08.4529263Z 2018/12/13 05:01:59 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4529389Z 2018/12/13 05:01:59 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4529791Z 2018/12/13 05:01:59 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4529923Z 2018/12/13 05:02:03 [INFO] preparing arguments for AzureRM Application Insights creation.
+2018-12-13T05:03:08.4530041Z 2018/12/13 05:02:08 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:08.4530191Z 2018/12/13 05:02:08 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4530323Z 2018/12/13 05:02:08 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4530462Z 2018/12/13 05:02:08 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4530579Z 2018/12/13 05:02:10 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:08.4530717Z 2018/12/13 05:02:10 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4530841Z 2018/12/13 05:02:10 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4530980Z 2018/12/13 05:02:10 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4531099Z 2018/12/13 05:02:12 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:08.4531217Z 2018/12/13 05:02:12 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4531378Z 2018/12/13 05:02:12 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4531496Z 2018/12/13 05:02:12 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4531634Z 2018/12/13 05:02:13 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4531757Z 2018/12/13 05:02:13 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4531898Z 2018/12/13 05:02:13 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4532070Z 2018/12/13 05:02:15 [WARN] Test: Executing destroy step
+2018-12-13T05:03:08.4532194Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:08.4532332Z 2018/12/13 05:02:15 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:08.4532452Z 2018/12/13 05:02:15 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4532676Z 2018/12/13 05:02:15 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4532796Z 2018/12/13 05:02:15 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4532932Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:08.4533048Z 2018/12/13 05:02:17 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:08.4533141Z 
+2018-12-13T05:03:08.4533264Z DESTROY: azurerm_application_insights.test
+2018-12-13T05:03:08.4533373Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:08.4533465Z 
+2018-12-13T05:03:08.4533585Z STATE:
+2018-12-13T05:03:08.4533673Z 
+2018-12-13T05:03:08.4533777Z azurerm_application_insights.test:
+2018-12-13T05:03:08.4534429Z   ID = /subscriptions/***/resourceGroups/acctestRG-4590834492582371236/providers/microsoft.insights/components/acctestappinsights-4590834492582371236
+2018-12-13T05:03:08.4534767Z   provider = provider.azurerm
+2018-12-13T05:03:08.4535152Z   app_id = ccbbfa6d-7a3f-4b73-a89d-e53a06f812df
+2018-12-13T05:03:08.4535312Z   application_type = phone
+2018-12-13T05:03:08.4535681Z   instrumentation_key = ae4aa5ed-993a-4252-a38e-133ecca3657e
+2018-12-13T05:03:08.4535829Z   location = westeurope
+2018-12-13T05:03:08.4536173Z   name = acctestappinsights-4590834492582371236
+2018-12-13T05:03:08.4536526Z   resource_group_name = acctestRG-4590834492582371236
+2018-12-13T05:03:08.4536669Z   tags.% = 0
+2018-12-13T05:03:08.4536785Z 
+2018-12-13T05:03:08.4536888Z   Dependencies:
+2018-12-13T05:03:08.4536993Z     azurerm_resource_group.test
+2018-12-13T05:03:08.4537119Z azurerm_resource_group.test:
+2018-12-13T05:03:08.4537546Z   ID = /subscriptions/***/resourceGroups/acctestRG-4590834492582371236
+2018-12-13T05:03:08.4537729Z   provider = provider.azurerm
+2018-12-13T05:03:08.4537837Z   location = westeurope
+2018-12-13T05:03:08.4538236Z   name = acctestRG-4590834492582371236
+2018-12-13T05:03:08.4538382Z   tags.% = 0
+2018-12-13T05:03:08.4538503Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:08.4538707Z 2018/12/13 05:02:17 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:08.4538840Z 2018/12/13 05:02:17 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:08.4538984Z 2018/12/13 05:02:17 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:08.4539102Z 2018/12/13 05:03:08 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:08.4539236Z 2018/12/13 05:03:08 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:08.4539668Z 2018/12/13 05:03:08 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:08.4540483Z --- PASS: TestAccAzureRMApplicationInsights_basicPhone (71.46s)
+2018-12-13T05:03:08.4540707Z PASS
+2018-12-13T05:03:09.2977865Z === RUN   TestAccAzureRMApplicationInsights_basiciOS
+2018-12-13T05:03:09.2978965Z === PAUSE TestAccAzureRMApplicationInsights_basiciOS
+2018-12-13T05:03:09.2979811Z === CONT  TestAccAzureRMApplicationInsights_basiciOS
+2018-12-13T05:03:09.2980426Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:09.2980693Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:09.2980839Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:09.2981008Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2981150Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2981312Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2981444Z 2018/12/13 05:01:59 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:09.2981569Z 
+2018-12-13T05:03:09.2981693Z CREATE: azurerm_application_insights.test
+2018-12-13T05:03:09.2981817Z   app_id:              "" => "<computed>"
+2018-12-13T05:03:09.2981974Z   application_type:    "" => "ios" (forces new resource)
+2018-12-13T05:03:09.2982206Z   instrumentation_key: "<sensitive>" => "<sensitive>" (attribute changed)
+2018-12-13T05:03:09.2982356Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:09.2983254Z   name:                "" => "acctestappinsights-1240926873398383077" (forces new resource)
+2018-12-13T05:03:09.2983800Z   resource_group_name: "" => "acctestRG-1240926873398383077" (forces new resource)
+2018-12-13T05:03:09.2984022Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:09.2984158Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:09.2984317Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:09.2984764Z   name:     "" => "acctestRG-1240926873398383077" (forces new resource)
+2018-12-13T05:03:09.2984939Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:09.2985545Z 
+2018-12-13T05:03:09.2985692Z STATE:
+2018-12-13T05:03:09.2985794Z 
+2018-12-13T05:03:09.2986093Z <no state>
+2018-12-13T05:03:09.2986223Z 2018/12/13 05:01:59 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:09.2986391Z 2018/12/13 05:01:59 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2986535Z 2018/12/13 05:01:59 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2986670Z 2018/12/13 05:01:59 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2986829Z 2018/12/13 05:02:03 [INFO] preparing arguments for AzureRM Application Insights creation.
+2018-12-13T05:03:09.2986963Z 2018/12/13 05:02:08 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:09.2987121Z 2018/12/13 05:02:08 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2987296Z 2018/12/13 05:02:08 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2987464Z 2018/12/13 05:02:08 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2987616Z 2018/12/13 05:02:09 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:09.2987768Z 2018/12/13 05:02:09 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2987909Z 2018/12/13 05:02:09 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2988041Z 2018/12/13 05:02:09 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2988258Z 2018/12/13 05:02:12 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:09.2988393Z 2018/12/13 05:02:12 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2988553Z 2018/12/13 05:02:12 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2988686Z 2018/12/13 05:02:12 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2988847Z 2018/12/13 05:02:14 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2988992Z 2018/12/13 05:02:14 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2989143Z 2018/12/13 05:02:14 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2989274Z 2018/12/13 05:02:16 [WARN] Test: Executing destroy step
+2018-12-13T05:03:09.2989402Z 2018/12/13 05:02:16 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:09.2989556Z 2018/12/13 05:02:16 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:09.2989692Z 2018/12/13 05:02:16 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2989853Z 2018/12/13 05:02:16 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2989984Z 2018/12/13 05:02:16 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2990141Z 2018/12/13 05:02:18 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:09.2990341Z 2018/12/13 05:02:18 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:09.2990446Z 
+2018-12-13T05:03:09.2990584Z DESTROY: azurerm_application_insights.test
+2018-12-13T05:03:09.2990706Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:09.2990808Z 
+2018-12-13T05:03:09.2990943Z STATE:
+2018-12-13T05:03:09.2991041Z 
+2018-12-13T05:03:09.2991154Z azurerm_application_insights.test:
+2018-12-13T05:03:09.2991923Z   ID = /subscriptions/***/resourceGroups/acctestRG-1240926873398383077/providers/microsoft.insights/components/acctestappinsights-1240926873398383077
+2018-12-13T05:03:09.2992212Z   provider = provider.azurerm
+2018-12-13T05:03:09.2992632Z   app_id = 031dfdb8-02df-4195-92de-0311456c7ded
+2018-12-13T05:03:09.2992797Z   application_type = ios
+2018-12-13T05:03:09.2993208Z   instrumentation_key = 9559a025-c01d-44b1-b7f8-2a770911865a
+2018-12-13T05:03:09.2993374Z   location = westeurope
+2018-12-13T05:03:09.2993861Z   name = acctestappinsights-1240926873398383077
+2018-12-13T05:03:09.2994272Z   resource_group_name = acctestRG-1240926873398383077
+2018-12-13T05:03:09.2994443Z   tags.% = 0
+2018-12-13T05:03:09.2994570Z 
+2018-12-13T05:03:09.2994686Z   Dependencies:
+2018-12-13T05:03:09.2995281Z     azurerm_resource_group.test
+2018-12-13T05:03:09.2995452Z azurerm_resource_group.test:
+2018-12-13T05:03:09.2995994Z   ID = /subscriptions/***/resourceGroups/acctestRG-1240926873398383077
+2018-12-13T05:03:09.2996198Z   provider = provider.azurerm
+2018-12-13T05:03:09.2996319Z   location = westeurope
+2018-12-13T05:03:09.2996702Z   name = acctestRG-1240926873398383077
+2018-12-13T05:03:09.2996866Z   tags.% = 0
+2018-12-13T05:03:09.2996994Z 2018/12/13 05:02:18 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:09.2997152Z 2018/12/13 05:02:18 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:09.2997290Z 2018/12/13 05:02:18 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:09.2997455Z 2018/12/13 05:02:18 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:09.2997595Z 2018/12/13 05:03:09 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:09.2997744Z 2018/12/13 05:03:09 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:09.2997876Z 2018/12/13 05:03:09 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:09.2998256Z --- PASS: TestAccAzureRMApplicationInsights_basiciOS (72.39s)
+2018-12-13T05:03:09.2998443Z PASS
+2018-12-13T05:03:24.6008554Z === RUN   TestAccAzureRMApplicationSecurityGroup_basic
+2018-12-13T05:03:24.6009347Z === PAUSE TestAccAzureRMApplicationSecurityGroup_basic
+2018-12-13T05:03:24.6012933Z === CONT  TestAccAzureRMApplicationSecurityGroup_basic
+2018-12-13T05:03:24.6013147Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:24.6013289Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.6013470Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:24.6013642Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.6013837Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.6014309Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.6014504Z 2018/12/13 05:01:59 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:24.6014618Z 
+2018-12-13T05:03:24.6014740Z CREATE: azurerm_application_security_group.test
+2018-12-13T05:03:24.6014890Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:24.6015854Z   name:                "" => "acctest-7806293701411443965" (forces new resource)
+2018-12-13T05:03:24.6016366Z   resource_group_name: "" => "acctestRG-7806293701411443965" (forces new resource)
+2018-12-13T05:03:24.6016581Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:24.6016727Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:24.6017036Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:24.6017621Z   name:     "" => "acctestRG-7806293701411443965" (forces new resource)
+2018-12-13T05:03:24.6017826Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:24.6017942Z 
+2018-12-13T05:03:24.6018064Z STATE:
+2018-12-13T05:03:24.6018170Z 
+2018-12-13T05:03:24.6018368Z <no state>
+2018-12-13T05:03:24.6018542Z 2018/12/13 05:01:59 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:24.6018699Z 2018/12/13 05:01:59 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.6018839Z 2018/12/13 05:01:59 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.6018991Z 2018/12/13 05:01:59 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.6019124Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:24.6019367Z 2018/12/13 05:02:17 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.6019538Z 2018/12/13 05:02:17 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.6019673Z 2018/12/13 05:02:17 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.6019827Z 2018/12/13 05:02:18 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.6019962Z 2018/12/13 05:02:18 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.6020167Z 2018/12/13 05:02:18 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.6020308Z 2018/12/13 05:02:18 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.6020458Z 2018/12/13 05:02:20 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:24.6020595Z 2018/12/13 05:02:20 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.6020738Z 2018/12/13 05:02:20 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.6020902Z 2018/12/13 05:02:20 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.6021030Z 2018/12/13 05:02:21 [WARN] Test: Executing destroy step
+2018-12-13T05:03:24.6021180Z 2018/12/13 05:02:21 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:24.6021308Z 2018/12/13 05:02:22 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.6021460Z 2018/12/13 05:02:22 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.6021600Z 2018/12/13 05:02:22 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.6021733Z 2018/12/13 05:02:22 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.6021929Z 2018/12/13 05:02:23 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:24.6022077Z 2018/12/13 05:02:23 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:24.6022267Z 
+2018-12-13T05:03:24.6022402Z DESTROY: azurerm_application_security_group.test
+2018-12-13T05:03:24.6022526Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:24.6022650Z 
+2018-12-13T05:03:24.6022762Z STATE:
+2018-12-13T05:03:24.6022859Z 
+2018-12-13T05:03:24.6022998Z azurerm_application_security_group.test:
+2018-12-13T05:03:24.6023703Z   ID = /subscriptions/***/resourceGroups/acctestRG-7806293701411443965/providers/Microsoft.Network/applicationSecurityGroups/acctest-7806293701411443965
+2018-12-13T05:03:24.6023932Z   provider = provider.azurerm
+2018-12-13T05:03:24.6024058Z   location = westeurope
+2018-12-13T05:03:24.6024452Z   name = acctest-7806293701411443965
+2018-12-13T05:03:24.6024855Z   resource_group_name = acctestRG-7806293701411443965
+2018-12-13T05:03:24.6025043Z   tags.% = 0
+2018-12-13T05:03:24.6025150Z 
+2018-12-13T05:03:24.6025265Z   Dependencies:
+2018-12-13T05:03:24.6025412Z     azurerm_resource_group.test
+2018-12-13T05:03:24.6025533Z azurerm_resource_group.test:
+2018-12-13T05:03:24.6026128Z   ID = /subscriptions/***/resourceGroups/acctestRG-7806293701411443965
+2018-12-13T05:03:24.6026308Z   provider = provider.azurerm
+2018-12-13T05:03:24.6026432Z   location = westeurope
+2018-12-13T05:03:24.6026813Z   name = acctestRG-7806293701411443965
+2018-12-13T05:03:24.6026974Z   tags.% = 0
+2018-12-13T05:03:24.6027124Z 2018/12/13 05:02:23 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:24.6027265Z 2018/12/13 05:02:23 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.6027401Z 2018/12/13 05:02:23 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.6027559Z 2018/12/13 05:02:23 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.6027690Z 2018/12/13 05:03:24 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:24.6027933Z 2018/12/13 05:03:24 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.6028073Z 2018/12/13 05:03:24 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:24.6028548Z --- PASS: TestAccAzureRMApplicationSecurityGroup_basic (87.50s)
+2018-12-13T05:03:24.6028729Z PASS
+2018-12-13T05:03:24.9541877Z === RUN   TestAccAzureRMApplicationSecurityGroup_complete
+2018-12-13T05:03:24.9543556Z === PAUSE TestAccAzureRMApplicationSecurityGroup_complete
+2018-12-13T05:03:24.9544444Z === CONT  TestAccAzureRMApplicationSecurityGroup_complete
+2018-12-13T05:03:24.9544862Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:24.9545085Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.9545416Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:24.9545604Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.9545771Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.9545946Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.9546082Z 2018/12/13 05:02:00 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:24.9546213Z 
+2018-12-13T05:03:24.9546336Z CREATE: azurerm_application_security_group.test
+2018-12-13T05:03:24.9546465Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:24.9547437Z   name:                "" => "acctest-921563289866790145" (forces new resource)
+2018-12-13T05:03:24.9547926Z   resource_group_name: "" => "acctestRG-921563289866790145" (forces new resource)
+2018-12-13T05:03:24.9548130Z   tags.%:              "" => "1"
+2018-12-13T05:03:24.9548262Z   tags.Hello:          "" => "World"
+2018-12-13T05:03:24.9548387Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:24.9548541Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:24.9549408Z   name:     "" => "acctestRG-921563289866790145" (forces new resource)
+2018-12-13T05:03:24.9549634Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:24.9549743Z 
+2018-12-13T05:03:24.9549861Z STATE:
+2018-12-13T05:03:24.9549981Z 
+2018-12-13T05:03:24.9550096Z <no state>
+2018-12-13T05:03:24.9550222Z 2018/12/13 05:02:00 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:24.9550381Z 2018/12/13 05:02:00 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.9550521Z 2018/12/13 05:02:00 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.9550680Z 2018/12/13 05:02:00 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.9550813Z 2018/12/13 05:02:17 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:24.9550967Z 2018/12/13 05:02:17 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.9551110Z 2018/12/13 05:02:17 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.9551376Z 2018/12/13 05:02:17 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.9551534Z 2018/12/13 05:02:19 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.9551670Z 2018/12/13 05:02:19 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.9551827Z 2018/12/13 05:02:19 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.9551960Z 2018/12/13 05:02:19 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.9552107Z 2018/12/13 05:02:21 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:24.9552243Z 2018/12/13 05:02:21 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.9552379Z 2018/12/13 05:02:21 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.9552693Z 2018/12/13 05:02:21 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.9552863Z 2018/12/13 05:02:22 [WARN] Test: Executing destroy step
+2018-12-13T05:03:24.9553041Z 2018/12/13 05:02:22 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:24.9553178Z 2018/12/13 05:02:22 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.9553335Z 2018/12/13 05:02:22 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.9553475Z 2018/12/13 05:02:22 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.9553630Z 2018/12/13 05:02:22 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.9553761Z 2018/12/13 05:02:24 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:24.9553907Z 2018/12/13 05:02:24 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:24.9554013Z 
+2018-12-13T05:03:24.9554132Z DESTROY: azurerm_application_security_group.test
+2018-12-13T05:03:24.9554285Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:24.9554399Z 
+2018-12-13T05:03:24.9554512Z STATE:
+2018-12-13T05:03:24.9554628Z 
+2018-12-13T05:03:24.9554746Z azurerm_application_security_group.test:
+2018-12-13T05:03:24.9555462Z   ID = /subscriptions/***/resourceGroups/acctestRG-921563289866790145/providers/Microsoft.Network/applicationSecurityGroups/acctest-921563289866790145
+2018-12-13T05:03:24.9555668Z   provider = provider.azurerm
+2018-12-13T05:03:24.9555814Z   location = westeurope
+2018-12-13T05:03:24.9556195Z   name = acctest-921563289866790145
+2018-12-13T05:03:24.9556604Z   resource_group_name = acctestRG-921563289866790145
+2018-12-13T05:03:24.9556794Z   tags.% = 1
+2018-12-13T05:03:24.9556917Z   tags.Hello = World
+2018-12-13T05:03:24.9557018Z 
+2018-12-13T05:03:24.9557152Z   Dependencies:
+2018-12-13T05:03:24.9557272Z     azurerm_resource_group.test
+2018-12-13T05:03:24.9557410Z azurerm_resource_group.test:
+2018-12-13T05:03:24.9557885Z   ID = /subscriptions/***/resourceGroups/acctestRG-921563289866790145
+2018-12-13T05:03:24.9558095Z   provider = provider.azurerm
+2018-12-13T05:03:24.9558231Z   location = westeurope
+2018-12-13T05:03:24.9558594Z   name = acctestRG-921563289866790145
+2018-12-13T05:03:24.9559054Z   tags.% = 0
+2018-12-13T05:03:24.9559221Z 2018/12/13 05:02:24 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:24.9559380Z 2018/12/13 05:02:24 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:24.9559522Z 2018/12/13 05:02:24 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:24.9559716Z 2018/12/13 05:02:24 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:24.9559879Z 2018/12/13 05:03:24 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:24.9560010Z 2018/12/13 05:03:24 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:24.9560162Z 2018/12/13 05:03:24 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:24.9560619Z --- PASS: TestAccAzureRMApplicationSecurityGroup_complete (87.76s)
+2018-12-13T05:03:24.9560891Z PASS
+2018-12-13T05:03:26.0501085Z === RUN   TestAccAzureRMApplicationSecurityGroup_update
+2018-12-13T05:03:26.0501747Z === PAUSE TestAccAzureRMApplicationSecurityGroup_update
+2018-12-13T05:03:26.0502087Z === CONT  TestAccAzureRMApplicationSecurityGroup_update
+2018-12-13T05:03:26.0502317Z 2018/12/13 05:01:56 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:26.0502807Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:26.0502999Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:26.0503278Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0503553Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0503911Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0504236Z 2018/12/13 05:01:59 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:26.0504344Z 
+2018-12-13T05:03:26.0504453Z CREATE: azurerm_application_security_group.test
+2018-12-13T05:03:26.0504604Z   location:            "" => "westeurope" (forces new resource)
+2018-12-13T05:03:26.0505711Z   name:                "" => "acctest-8632613042084615263" (forces new resource)
+2018-12-13T05:03:26.0506355Z   resource_group_name: "" => "acctestRG-8632613042084615263" (forces new resource)
+2018-12-13T05:03:26.0506516Z   tags.%:              "" => "<computed>"
+2018-12-13T05:03:26.0506680Z CREATE: azurerm_resource_group.test
+2018-12-13T05:03:26.0506800Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:03:26.0507161Z   name:     "" => "acctestRG-8632613042084615263" (forces new resource)
+2018-12-13T05:03:26.0507363Z   tags.%:   "" => "<computed>"
+2018-12-13T05:03:26.0507460Z 
+2018-12-13T05:03:26.0507658Z STATE:
+2018-12-13T05:03:26.0507808Z 
+2018-12-13T05:03:26.0507910Z <no state>
+2018-12-13T05:03:26.0508023Z 2018/12/13 05:01:59 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:26.0508201Z 2018/12/13 05:01:59 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0508326Z 2018/12/13 05:01:59 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0508494Z 2018/12/13 05:01:59 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0508612Z 2018/12/13 05:02:16 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:26.0509070Z 2018/12/13 05:02:16 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0509201Z 2018/12/13 05:02:16 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0509363Z 2018/12/13 05:02:16 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0509486Z 2018/12/13 05:02:18 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:26.0509839Z 2018/12/13 05:02:18 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0510015Z 2018/12/13 05:02:18 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0510277Z 2018/12/13 05:02:18 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0510444Z 2018/12/13 05:02:20 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:26.0510627Z 2018/12/13 05:02:20 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0510857Z 2018/12/13 05:02:20 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0510982Z 2018/12/13 05:02:20 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0511140Z 2018/12/13 05:02:21 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:26.0511271Z 2018/12/13 05:02:21 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:26.0511486Z 2018/12/13 05:02:21 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0511660Z 2018/12/13 05:02:21 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0511778Z 2018/12/13 05:02:21 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0511940Z 2018/12/13 05:02:23 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:26.0512060Z 2018/12/13 05:02:23 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0512225Z 2018/12/13 05:02:23 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0512347Z 2018/12/13 05:02:23 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0512460Z 2018/12/13 05:02:25 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:26.0512597Z 
+2018-12-13T05:03:26.0512769Z UPDATE: azurerm_application_security_group.test
+2018-12-13T05:03:26.0512931Z   tags.%:     "0" => "1"
+2018-12-13T05:03:26.0513043Z   tags.Hello: "" => "World"
+2018-12-13T05:03:26.0513133Z 
+2018-12-13T05:03:26.0513273Z STATE:
+2018-12-13T05:03:26.0513364Z 
+2018-12-13T05:03:26.0513470Z azurerm_application_security_group.test:
+2018-12-13T05:03:26.0514178Z   ID = /subscriptions/***/resourceGroups/acctestRG-8632613042084615263/providers/Microsoft.Network/applicationSecurityGroups/acctest-8632613042084615263
+2018-12-13T05:03:26.0514360Z   provider = provider.azurerm
+2018-12-13T05:03:26.0514519Z   location = westeurope
+2018-12-13T05:03:26.0514857Z   name = acctest-8632613042084615263
+2018-12-13T05:03:26.0515269Z   resource_group_name = acctestRG-8632613042084615263
+2018-12-13T05:03:26.0515417Z   tags.% = 0
+2018-12-13T05:03:26.0515508Z 
+2018-12-13T05:03:26.0515657Z   Dependencies:
+2018-12-13T05:03:26.0515763Z     azurerm_resource_group.test
+2018-12-13T05:03:26.0515922Z azurerm_resource_group.test:
+2018-12-13T05:03:26.0516422Z   ID = /subscriptions/***/resourceGroups/acctestRG-8632613042084615263
+2018-12-13T05:03:26.0516590Z   provider = provider.azurerm
+2018-12-13T05:03:26.0516751Z   location = westeurope
+2018-12-13T05:03:26.0517074Z   name = acctestRG-8632613042084615263
+2018-12-13T05:03:26.0517264Z   tags.% = 0
+2018-12-13T05:03:26.0517382Z 2018/12/13 05:02:25 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:26.0517503Z 2018/12/13 05:02:25 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0517674Z 2018/12/13 05:02:25 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0517795Z 2018/12/13 05:02:25 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0517958Z 2018/12/13 05:02:28 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:26.0518077Z 2018/12/13 05:02:28 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0518241Z 2018/12/13 05:02:28 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0518372Z 2018/12/13 05:02:28 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0518526Z 2018/12/13 05:02:30 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:26.0518682Z 2018/12/13 05:02:30 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0518827Z 2018/12/13 05:02:30 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0518995Z 2018/12/13 05:02:30 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0519109Z 2018/12/13 05:02:32 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:03:26.0519271Z 2018/12/13 05:02:32 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0519393Z 2018/12/13 05:02:32 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0519558Z 2018/12/13 05:02:32 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0519760Z 2018/12/13 05:02:33 [WARN] Test: Executing destroy step
+2018-12-13T05:03:26.0519877Z 2018/12/13 05:02:33 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:03:26.0520037Z 2018/12/13 05:02:33 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:26.0520155Z 2018/12/13 05:02:33 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0520322Z 2018/12/13 05:02:33 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0520473Z 2018/12/13 05:02:33 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0520637Z 2018/12/13 05:02:35 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:26.0520752Z 2018/12/13 05:02:35 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:03:26.0520843Z 
+2018-12-13T05:03:26.0521074Z DESTROY: azurerm_application_security_group.test
+2018-12-13T05:03:26.0521195Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:03:26.0521285Z 
+2018-12-13T05:03:26.0521428Z STATE:
+2018-12-13T05:03:26.0521515Z 
+2018-12-13T05:03:26.0521618Z azurerm_application_security_group.test:
+2018-12-13T05:03:26.0522206Z   ID = /subscriptions/***/resourceGroups/acctestRG-8632613042084615263/providers/Microsoft.Network/applicationSecurityGroups/acctest-8632613042084615263
+2018-12-13T05:03:26.0522510Z   provider = provider.azurerm
+2018-12-13T05:03:26.0522635Z   location = westeurope
+2018-12-13T05:03:26.0524313Z   name = acctest-8632613042084615263
+2018-12-13T05:03:26.0524919Z   resource_group_name = acctestRG-8632613042084615263
+2018-12-13T05:03:26.0525094Z   tags.% = 1
+2018-12-13T05:03:26.0525263Z   tags.Hello = World
+2018-12-13T05:03:26.0525368Z 
+2018-12-13T05:03:26.0525475Z   Dependencies:
+2018-12-13T05:03:26.0525616Z     azurerm_resource_group.test
+2018-12-13T05:03:26.0525731Z azurerm_resource_group.test:
+2018-12-13T05:03:26.0526276Z   ID = /subscriptions/***/resourceGroups/acctestRG-8632613042084615263
+2018-12-13T05:03:26.0526467Z   provider = provider.azurerm
+2018-12-13T05:03:26.0526578Z   location = westeurope
+2018-12-13T05:03:26.0526973Z   name = acctestRG-8632613042084615263
+2018-12-13T05:03:26.0527124Z   tags.% = 0
+2018-12-13T05:03:26.0527287Z 2018/12/13 05:02:35 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:03:26.0527419Z 2018/12/13 05:02:35 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:03:26.0527547Z 2018/12/13 05:02:35 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:03:26.0527713Z 2018/12/13 05:02:35 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:03:26.0527831Z 2018/12/13 05:03:26 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:26.0527992Z 2018/12/13 05:03:26 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:03:26.0528119Z 2018/12/13 05:03:26 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:03:26.0528540Z --- PASS: TestAccAzureRMApplicationSecurityGroup_update (89.10s)
+2018-12-13T05:03:26.0528773Z PASS
+2018-12-13T05:04:11.7155763Z === RUN   TestAccAzureRMAppService_32Bit
+2018-12-13T05:04:11.7156531Z === PAUSE TestAccAzureRMAppService_32Bit
+2018-12-13T05:04:11.7156741Z === CONT  TestAccAzureRMAppService_32Bit
+2018-12-13T05:04:11.7158766Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:04:11.7159020Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:04:11.7159165Z 2018/12/13 05:01:57 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:04:11.7159561Z 2018/12/13 05:01:57 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7159956Z 2018/12/13 05:01:57 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7160141Z 2018/12/13 05:01:57 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7161658Z 2018/12/13 05:01:59 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:04:11.7161798Z 
+2018-12-13T05:04:11.7161946Z CREATE: azurerm_app_service.test
+2018-12-13T05:04:11.7162088Z   app_service_plan_id:                     "" => "<computed>" (forces new resource)
+2018-12-13T05:04:11.7162230Z   app_settings.%:                          "" => "<computed>"
+2018-12-13T05:04:11.7162384Z   client_affinity_enabled:                 "" => "<computed>"
+2018-12-13T05:04:11.7162517Z   connection_string.#:                     "" => "<computed>"
+2018-12-13T05:04:11.7162667Z   default_site_hostname:                   "" => "<computed>"
+2018-12-13T05:04:11.7162797Z   enabled:                                 "" => "true"
+2018-12-13T05:04:11.7162944Z   https_only:                              "" => "false"
+2018-12-13T05:04:11.7163078Z   identity.#:                              "" => "<computed>"
+2018-12-13T05:04:11.7163211Z   location:                                "" => "westeurope" (forces new resource)
+2018-12-13T05:04:11.7164298Z   name:                                    "" => "acctestAS-1229537296729527892" (forces new resource)
+2018-12-13T05:04:11.7164515Z   outbound_ip_addresses:                   "" => "<computed>"
+2018-12-13T05:04:11.7165005Z   resource_group_name:                     "" => "acctestRG-1229537296729527892" (forces new resource)
+2018-12-13T05:04:11.7165251Z   site_config.#:                           "" => "1"
+2018-12-13T05:04:11.7165416Z   site_config.0.always_on:                 "" => "false"
+2018-12-13T05:04:11.7165551Z   site_config.0.dotnet_framework_version:  "" => "v4.0"
+2018-12-13T05:04:11.7165678Z   site_config.0.ftps_state:                "" => "<computed>"
+2018-12-13T05:04:11.7165823Z   site_config.0.http2_enabled:             "" => "false"
+2018-12-13T05:04:11.7165950Z   site_config.0.ip_restriction.#:          "" => "<computed>"
+2018-12-13T05:04:11.7166096Z   site_config.0.linux_fx_version:          "" => "<computed>"
+2018-12-13T05:04:11.7166234Z   site_config.0.local_mysql_enabled:       "" => "<computed>"
+2018-12-13T05:04:11.7166373Z   site_config.0.min_tls_version:           "" => "<computed>"
+2018-12-13T05:04:11.7166517Z   site_config.0.remote_debugging_enabled:  "" => "false"
+2018-12-13T05:04:11.7166641Z   site_config.0.scm_type:                  "" => "None"
+2018-12-13T05:04:11.7166785Z   site_config.0.use_32_bit_worker_process: "" => "true"
+2018-12-13T05:04:11.7167664Z   site_config.0.websockets_enabled:        "" => "<computed>"
+2018-12-13T05:04:11.7167890Z   site_credential.#:                       "" => "<computed>"
+2018-12-13T05:04:11.7168020Z   source_control.#:                        "" => "<computed>"
+2018-12-13T05:04:11.7168217Z   tags.%:                                  "" => "<computed>"
+2018-12-13T05:04:11.7171736Z CREATE: azurerm_app_service_plan.test
+2018-12-13T05:04:11.7172320Z   kind:                      "" => "Windows" (forces new resource)
+2018-12-13T05:04:11.7172538Z   location:                  "" => "westeurope" (forces new resource)
+2018-12-13T05:04:11.7172844Z   maximum_number_of_workers: "" => "<computed>"
+2018-12-13T05:04:11.7173474Z   name:                      "" => "acctestASP-1229537296729527892" (forces new resource)
+2018-12-13T05:04:11.7173667Z   properties.#:              "" => "<computed>"
+2018-12-13T05:04:11.7174113Z   resource_group_name:       "" => "acctestRG-1229537296729527892" (forces new resource)
+2018-12-13T05:04:11.7174291Z   sku.#:                     "" => "1"
+2018-12-13T05:04:11.7174423Z   sku.0.capacity:            "" => "<computed>"
+2018-12-13T05:04:11.7174857Z   sku.0.size:                "" => "S1"
+2018-12-13T05:04:11.7175092Z   sku.0.tier:                "" => "Standard"
+2018-12-13T05:04:11.7175275Z   tags.%:                    "" => "<computed>"
+2018-12-13T05:04:11.7175411Z CREATE: azurerm_resource_group.test
+2018-12-13T05:04:11.7175564Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:04:11.7176303Z   name:     "" => "acctestRG-1229537296729527892" (forces new resource)
+2018-12-13T05:04:11.7176790Z   tags.%:   "" => "<computed>"
+2018-12-13T05:04:11.7177445Z 
+2018-12-13T05:04:11.7177831Z STATE:
+2018-12-13T05:04:11.7178650Z 
+2018-12-13T05:04:11.7179007Z <no state>
+2018-12-13T05:04:11.7179334Z 2018/12/13 05:01:59 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:04:11.7179691Z 2018/12/13 05:01:59 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7180028Z 2018/12/13 05:01:59 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7180801Z 2018/12/13 05:01:59 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7181070Z 2018/12/13 05:02:03 [INFO] preparing arguments for AzureRM App Service Plan creation.
+2018-12-13T05:04:11.7181250Z 2018/12/13 05:02:28 [INFO] preparing arguments for AzureRM App Service creation.
+2018-12-13T05:04:11.7181598Z 2018/12/13 05:02:58 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:04:11.7182109Z 2018/12/13 05:02:58 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7182343Z 2018/12/13 05:02:58 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7182514Z 2018/12/13 05:02:58 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7182847Z 2018/12/13 05:03:00 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:04:11.7183086Z 2018/12/13 05:03:00 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7183240Z 2018/12/13 05:03:00 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7183600Z 2018/12/13 05:03:00 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7183818Z 2018/12/13 05:03:05 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:04:11.7183989Z 2018/12/13 05:03:05 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7184335Z 2018/12/13 05:03:05 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7184581Z 2018/12/13 05:03:05 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7184922Z 2018/12/13 05:03:06 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7185159Z 2018/12/13 05:03:06 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7185497Z 2018/12/13 05:03:06 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7185729Z 2018/12/13 05:03:10 [WARN] Test: Executing destroy step
+2018-12-13T05:04:11.7186064Z 2018/12/13 05:03:10 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:04:11.7186531Z 2018/12/13 05:03:10 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:04:11.7186913Z 2018/12/13 05:03:10 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7187159Z 2018/12/13 05:03:10 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7187324Z 2018/12/13 05:03:10 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7187652Z 2018/12/13 05:03:15 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:04:11.7188040Z 2018/12/13 05:03:15 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:04:11.7188219Z 
+2018-12-13T05:04:11.7188711Z DESTROY: azurerm_app_service.test
+2018-12-13T05:04:11.7189153Z DESTROY: azurerm_app_service_plan.test
+2018-12-13T05:04:11.7189392Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:04:11.7189512Z 
+2018-12-13T05:04:11.7189629Z STATE:
+2018-12-13T05:04:11.7189728Z 
+2018-12-13T05:04:11.7190063Z azurerm_app_service.test:
+2018-12-13T05:04:11.7190899Z   ID = /subscriptions/***/resourceGroups/acctestRG-1229537296729527892/providers/Microsoft.Web/sites/acctestAS-1229537296729527892
+2018-12-13T05:04:11.7191127Z   provider = provider.azurerm
+2018-12-13T05:04:11.7191747Z   app_service_plan_id = /subscriptions/***/resourceGroups/acctestRG-1229537296729527892/providers/Microsoft.Web/serverfarms/acctestASP-1229537296729527892
+2018-12-13T05:04:11.7192084Z   app_settings.% = 1
+2018-12-13T05:04:11.7192506Z   app_settings.WEBSITE_NODE_DEFAULT_VERSION = 6.9.1
+2018-12-13T05:04:11.7196403Z   client_affinity_enabled = true
+2018-12-13T05:04:11.7196896Z   connection_string.# = 0
+2018-12-13T05:04:11.7197478Z   default_site_hostname = acctestas-1229537296729527892.azurewebsites.net
+2018-12-13T05:04:11.7197671Z   enabled = true
+2018-12-13T05:04:11.7198074Z   https_only = false
+2018-12-13T05:04:11.7198285Z   identity.# = 0
+2018-12-13T05:04:11.7198776Z   location = westeurope
+2018-12-13T05:04:11.7199481Z   name = acctestAS-1229537296729527892
+2018-12-13T05:04:11.7199960Z   outbound_ip_addresses = 40.68.205.178,13.95.10.43,13.95.11.97,52.166.198.114,40.68.101.225
+2018-12-13T05:04:11.7200642Z   resource_group_name = acctestRG-1229537296729527892
+2018-12-13T05:04:11.7201115Z   site_config.# = 1
+2018-12-13T05:04:11.7201587Z   site_config.0.always_on = false
+2018-12-13T05:04:11.7201946Z   site_config.0.default_documents.# = 0
+2018-12-13T05:04:11.7202299Z   site_config.0.dotnet_framework_version = v4.0
+2018-12-13T05:04:11.7202688Z   site_config.0.ftps_state = AllAllowed
+2018-12-13T05:04:11.7203040Z   site_config.0.http2_enabled = false
+2018-12-13T05:04:11.7203354Z   site_config.0.ip_restriction.# = 0
+2018-12-13T05:04:11.7203685Z   site_config.0.java_container = 
+2018-12-13T05:04:11.7203990Z   site_config.0.java_container_version = 
+2018-12-13T05:04:11.7204328Z   site_config.0.java_version = 
+2018-12-13T05:04:11.7204639Z   site_config.0.linux_fx_version = 
+2018-12-13T05:04:11.7204971Z   site_config.0.local_mysql_enabled = false
+2018-12-13T05:04:11.7205292Z   site_config.0.managed_pipeline_mode = Integrated
+2018-12-13T05:04:11.7205626Z   site_config.0.min_tls_version = 1.2
+2018-12-13T05:04:11.7205938Z   site_config.0.php_version = 
+2018-12-13T05:04:11.7206259Z   site_config.0.python_version = 
+2018-12-13T05:04:11.7206603Z   site_config.0.remote_debugging_enabled = false
+2018-12-13T05:04:11.7206918Z   site_config.0.remote_debugging_version = VS2017
+2018-12-13T05:04:11.7207255Z   site_config.0.scm_type = None
+2018-12-13T05:04:11.7207567Z   site_config.0.use_32_bit_worker_process = true
+2018-12-13T05:04:11.7207900Z   site_config.0.virtual_network_name = 
+2018-12-13T05:04:11.7208547Z   site_config.0.websockets_enabled = false
+2018-12-13T05:04:11.7208995Z   site_credential.# = 1
+2018-12-13T05:04:11.7209330Z   site_credential.0.password = uZGArk7LC81S4vYMtezFL52HlQWy8E2aPRtSvojpNbilZqcDWDMM2xoqT9L1
+2018-12-13T05:04:11.7210247Z   site_credential.0.username = $acctestAS-1229537296729527892
+2018-12-13T05:04:11.7210670Z   source_control.# = 1
+2018-12-13T05:04:11.7210994Z   source_control.0.branch = master
+2018-12-13T05:04:11.7211338Z   source_control.0.repo_url = 
+2018-12-13T05:04:11.7211648Z   tags.% = 0
+2018-12-13T05:04:11.7211952Z 
+2018-12-13T05:04:11.7212277Z   Dependencies:
+2018-12-13T05:04:11.7212584Z     azurerm_app_service_plan.test
+2018-12-13T05:04:11.7212923Z     azurerm_resource_group.test
+2018-12-13T05:04:11.7213231Z azurerm_app_service_plan.test:
+2018-12-13T05:04:11.7214152Z   ID = /subscriptions/***/resourceGroups/acctestRG-1229537296729527892/providers/Microsoft.Web/serverfarms/acctestASP-1229537296729527892
+2018-12-13T05:04:11.7214599Z   provider = provider.azurerm
+2018-12-13T05:04:11.7214929Z   kind = Windows
+2018-12-13T05:04:11.7215239Z   location = westeurope
+2018-12-13T05:04:11.7215571Z   maximum_number_of_workers = 10
+2018-12-13T05:04:11.7216179Z   name = acctestASP-1229537296729527892
+2018-12-13T05:04:11.7216666Z   properties.# = 1
+2018-12-13T05:04:11.7216993Z   properties.0.app_service_environment_id = 
+2018-12-13T05:04:11.7217335Z   properties.0.per_site_scaling = false
+2018-12-13T05:04:11.7217644Z   properties.0.reserved = false
+2018-12-13T05:04:11.7218703Z   resource_group_name = acctestRG-1229537296729527892
+2018-12-13T05:04:11.7219208Z   sku.# = 1
+2018-12-13T05:04:11.7219535Z   sku.0.capacity = 1
+2018-12-13T05:04:11.7219987Z   sku.0.size = S1
+2018-12-13T05:04:11.7220299Z   sku.0.tier = Standard
+2018-12-13T05:04:11.7220628Z   tags.% = 0
+2018-12-13T05:04:11.7220908Z 
+2018-12-13T05:04:11.7221240Z   Dependencies:
+2018-12-13T05:04:11.7221553Z     azurerm_resource_group.test
+2018-12-13T05:04:11.7221861Z azurerm_resource_group.test:
+2018-12-13T05:04:11.7222636Z   ID = /subscriptions/***/resourceGroups/acctestRG-1229537296729527892
+2018-12-13T05:04:11.7223063Z   provider = provider.azurerm
+2018-12-13T05:04:11.7223387Z   location = westeurope
+2018-12-13T05:04:11.7223983Z   name = acctestRG-1229537296729527892
+2018-12-13T05:04:11.7224406Z   tags.% = 0
+2018-12-13T05:04:11.7224731Z 2018/12/13 05:03:15 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:04:11.7225089Z 2018/12/13 05:03:15 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:04:11.7225419Z 2018/12/13 05:03:15 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:04:11.7225890Z 2018/12/13 05:03:15 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:04:11.7226224Z 2018/12/13 05:04:11 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:04:11.7226571Z 2018/12/13 05:04:11 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:04:11.7226892Z 2018/12/13 05:04:11 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:04:11.7227530Z --- PASS: TestAccAzureRMAppService_32Bit (134.41s)
+2018-12-13T05:04:11.7228158Z PASS
+2018-12-13T05:05:15.4963119Z === RUN   TestAccAzureRMAppService_appSettings
+2018-12-13T05:05:15.4963799Z === PAUSE TestAccAzureRMAppService_appSettings
+2018-12-13T05:05:15.4965033Z === CONT  TestAccAzureRMAppService_appSettings
+2018-12-13T05:05:15.4966120Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:05:15.4966464Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:05:15.4966664Z 2018/12/13 05:03:07 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:05:15.4969284Z 2018/12/13 05:03:07 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.4970713Z 2018/12/13 05:03:07 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.4971286Z 2018/12/13 05:03:07 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.4971682Z 2018/12/13 05:03:09 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:05:15.4971796Z 
+2018-12-13T05:05:15.4971932Z CREATE: azurerm_app_service.test
+2018-12-13T05:05:15.4972051Z   app_service_plan_id:     "" => "<computed>" (forces new resource)
+2018-12-13T05:05:15.4972164Z   app_settings.%:          "" => "1"
+2018-12-13T05:05:15.4972289Z   app_settings.foo:        "" => "bar"
+2018-12-13T05:05:15.4972401Z   client_affinity_enabled: "" => "<computed>"
+2018-12-13T05:05:15.4972529Z   connection_string.#:     "" => "<computed>"
+2018-12-13T05:05:15.4972654Z   default_site_hostname:   "" => "<computed>"
+2018-12-13T05:05:15.4972775Z   enabled:                 "" => "true"
+2018-12-13T05:05:15.4972904Z   https_only:              "" => "false"
+2018-12-13T05:05:15.4973143Z   identity.#:              "" => "<computed>"
+2018-12-13T05:05:15.4973289Z   location:                "" => "westeurope" (forces new resource)
+2018-12-13T05:05:15.4974115Z   name:                    "" => "acctestAS-5368334345066913088" (forces new resource)
+2018-12-13T05:05:15.4974308Z   outbound_ip_addresses:   "" => "<computed>"
+2018-12-13T05:05:15.4974766Z   resource_group_name:     "" => "acctestRG-5368334345066913088" (forces new resource)
+2018-12-13T05:05:15.4974928Z   site_config.#:           "" => "<computed>"
+2018-12-13T05:05:15.4975072Z   site_credential.#:       "" => "<computed>"
+2018-12-13T05:05:15.4975192Z   source_control.#:        "" => "<computed>"
+2018-12-13T05:05:15.4975326Z   tags.%:                  "" => "<computed>"
+2018-12-13T05:05:15.4975455Z CREATE: azurerm_app_service_plan.test
+2018-12-13T05:05:15.4975575Z   kind:                      "" => "Windows" (forces new resource)
+2018-12-13T05:05:15.4975849Z   location:                  "" => "westeurope" (forces new resource)
+2018-12-13T05:05:15.4976012Z   maximum_number_of_workers: "" => "<computed>"
+2018-12-13T05:05:15.4976465Z   name:                      "" => "acctestASP-5368334345066913088" (forces new resource)
+2018-12-13T05:05:15.4976635Z   properties.#:              "" => "<computed>"
+2018-12-13T05:05:15.4977030Z   resource_group_name:       "" => "acctestRG-5368334345066913088" (forces new resource)
+2018-12-13T05:05:15.4977213Z   sku.#:                     "" => "1"
+2018-12-13T05:05:15.4977335Z   sku.0.capacity:            "" => "<computed>"
+2018-12-13T05:05:15.4977471Z   sku.0.size:                "" => "S1"
+2018-12-13T05:05:15.4977589Z   sku.0.tier:                "" => "Standard"
+2018-12-13T05:05:15.4977722Z   tags.%:                    "" => "<computed>"
+2018-12-13T05:05:15.4977838Z CREATE: azurerm_resource_group.test
+2018-12-13T05:05:15.4978065Z   location: "" => "westeurope" (forces new resource)
+2018-12-13T05:05:15.4978493Z   name:     "" => "acctestRG-5368334345066913088" (forces new resource)
+2018-12-13T05:05:15.4978649Z   tags.%:   "" => "<computed>"
+2018-12-13T05:05:15.4978750Z 
+2018-12-13T05:05:15.4978881Z STATE:
+2018-12-13T05:05:15.4978975Z 
+2018-12-13T05:05:15.4979082Z <no state>
+2018-12-13T05:05:15.4979223Z 2018/12/13 05:03:09 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:05:15.4979352Z 2018/12/13 05:03:09 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.4979506Z 2018/12/13 05:03:09 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.4979634Z 2018/12/13 05:03:09 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.4979777Z 2018/12/13 05:03:12 [INFO] preparing arguments for AzureRM App Service Plan creation.
+2018-12-13T05:05:15.4979907Z 2018/12/13 05:03:36 [INFO] preparing arguments for AzureRM App Service creation.
+2018-12-13T05:05:15.4980049Z 2018/12/13 05:04:05 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:05:15.4980192Z 2018/12/13 05:04:05 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.4980321Z 2018/12/13 05:04:05 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.4980469Z 2018/12/13 05:04:05 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.4980591Z 2018/12/13 05:04:06 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:05:15.4980776Z 2018/12/13 05:04:06 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.4980917Z 2018/12/13 05:04:06 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.4981113Z 2018/12/13 05:04:06 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.4981259Z 2018/12/13 05:04:10 [INFO] terraform: building graph: GraphTypePlan
+2018-12-13T05:05:15.4997587Z 2018/12/13 05:04:10 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.4998222Z 2018/12/13 05:04:10 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.4998727Z 2018/12/13 05:04:10 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.4998903Z 2018/12/13 05:04:13 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.4999080Z 2018/12/13 05:04:13 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.4999270Z 2018/12/13 05:04:13 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.4999441Z 2018/12/13 05:04:16 [WARN] Test: Executing destroy step
+2018-12-13T05:05:15.4999575Z 2018/12/13 05:04:16 [INFO] terraform: building graph: GraphTypeValidate
+2018-12-13T05:05:15.4999742Z 2018/12/13 05:04:16 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:05:15.5000008Z 2018/12/13 05:04:16 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.5000149Z 2018/12/13 05:04:16 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.5000304Z 2018/12/13 05:04:16 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.5000436Z 2018/12/13 05:04:20 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:05:15.5000586Z 2018/12/13 05:04:20 [WARN] Test: Step plan: DIFF:
+2018-12-13T05:05:15.5000691Z 
+2018-12-13T05:05:15.5000809Z DESTROY: azurerm_app_service.test
+2018-12-13T05:05:15.5000948Z DESTROY: azurerm_app_service_plan.test
+2018-12-13T05:05:15.5001069Z DESTROY: azurerm_resource_group.test
+2018-12-13T05:05:15.5001187Z 
+2018-12-13T05:05:15.5001303Z STATE:
+2018-12-13T05:05:15.5001403Z 
+2018-12-13T05:05:15.5001536Z azurerm_app_service.test:
+2018-12-13T05:05:15.5002434Z   ID = /subscriptions/***/resourceGroups/acctestRG-5368334345066913088/providers/Microsoft.Web/sites/acctestAS-5368334345066913088
+2018-12-13T05:05:15.5002688Z   provider = provider.azurerm
+2018-12-13T05:05:15.5003649Z   app_service_plan_id = /subscriptions/***/resourceGroups/acctestRG-5368334345066913088/providers/Microsoft.Web/serverfarms/acctestASP-5368334345066913088
+2018-12-13T05:05:15.5003921Z   app_settings.% = 1
+2018-12-13T05:05:15.5004046Z   app_settings.foo = bar
+2018-12-13T05:05:15.5004184Z   client_affinity_enabled = true
+2018-12-13T05:05:15.5004372Z   connection_string.# = 0
+2018-12-13T05:05:15.5004813Z   default_site_hostname = acctestas-5368334345066913088.azurewebsites.net
+2018-12-13T05:05:15.5005012Z   enabled = true
+2018-12-13T05:05:15.5005134Z   https_only = false
+2018-12-13T05:05:15.5005271Z   identity.# = 0
+2018-12-13T05:05:15.5005392Z   location = westeurope
+2018-12-13T05:05:15.5005750Z   name = acctestAS-5368334345066913088
+2018-12-13T05:05:15.5005944Z   outbound_ip_addresses = 104.214.237.135,51.144.123.73,23.97.221.250,51.144.120.21,51.144.126.188
+2018-12-13T05:05:15.5006346Z   resource_group_name = acctestRG-5368334345066913088
+2018-12-13T05:05:15.5006531Z   site_config.# = 1
+2018-12-13T05:05:15.5006657Z   site_config.0.always_on = false
+2018-12-13T05:05:15.5006781Z   site_config.0.default_documents.# = 9
+2018-12-13T05:05:15.5006925Z   site_config.0.default_documents.0 = Default.htm
+2018-12-13T05:05:15.5007053Z   site_config.0.default_documents.1 = Default.html
+2018-12-13T05:05:15.5007201Z   site_config.0.default_documents.2 = Default.asp
+2018-12-13T05:05:15.5007328Z   site_config.0.default_documents.3 = index.htm
+2018-12-13T05:05:15.5007454Z   site_config.0.default_documents.4 = index.html
+2018-12-13T05:05:15.5007598Z   site_config.0.default_documents.5 = iisstart.htm
+2018-12-13T05:05:15.5007723Z   site_config.0.default_documents.6 = default.aspx
+2018-12-13T05:05:15.5007867Z   site_config.0.default_documents.7 = index.php
+2018-12-13T05:05:15.5007994Z   site_config.0.default_documents.8 = hostingstart.html
+2018-12-13T05:05:15.5008150Z   site_config.0.dotnet_framework_version = v4.0
+2018-12-13T05:05:15.5008292Z   site_config.0.ftps_state = AllAllowed
+2018-12-13T05:05:15.5008416Z   site_config.0.http2_enabled = false
+2018-12-13T05:05:15.5008559Z   site_config.0.ip_restriction.# = 0
+2018-12-13T05:05:15.5008682Z   site_config.0.java_container = 
+2018-12-13T05:05:15.5008825Z   site_config.0.java_container_version = 
+2018-12-13T05:05:15.5008950Z   site_config.0.java_version = 
+2018-12-13T05:05:15.5009073Z   site_config.0.linux_fx_version = 
+2018-12-13T05:05:15.5009216Z   site_config.0.local_mysql_enabled = false
+2018-12-13T05:05:15.5009345Z   site_config.0.managed_pipeline_mode = Integrated
+2018-12-13T05:05:15.5009654Z   site_config.0.min_tls_version = 1.2
+2018-12-13T05:05:15.5009798Z   site_config.0.php_version = 5.6
+2018-12-13T05:05:15.5009929Z   site_config.0.python_version = 
+2018-12-13T05:05:15.5010073Z   site_config.0.remote_debugging_enabled = false
+2018-12-13T05:05:15.5010266Z   site_config.0.remote_debugging_version = 
+2018-12-13T05:05:15.5010536Z   site_config.0.scm_type = None
+2018-12-13T05:05:15.5010669Z   site_config.0.use_32_bit_worker_process = true
+2018-12-13T05:05:15.5010792Z   site_config.0.virtual_network_name = 
+2018-12-13T05:05:15.5010932Z   site_config.0.websockets_enabled = false
+2018-12-13T05:05:15.5011052Z   site_credential.# = 1
+2018-12-13T05:05:15.5011265Z   site_credential.0.password = wLdjT6fMleHplbFqvaoxnN3jjT1CN9NNYvLTTZe5wpyzSmzWgtWMlyEGhQtz
+2018-12-13T05:05:15.5011726Z   site_credential.0.username = $acctestAS-5368334345066913088
+2018-12-13T05:05:15.5011922Z   source_control.# = 1
+2018-12-13T05:05:15.5012045Z   source_control.0.branch = master
+2018-12-13T05:05:15.5012166Z   source_control.0.repo_url = 
+2018-12-13T05:05:15.5012302Z   tags.% = 0
+2018-12-13T05:05:15.5012404Z 
+2018-12-13T05:05:15.5012519Z   Dependencies:
+2018-12-13T05:05:15.5012656Z     azurerm_app_service_plan.test
+2018-12-13T05:05:15.5012774Z     azurerm_resource_group.test
+2018-12-13T05:05:15.5013508Z azurerm_app_service_plan.test:
+2018-12-13T05:05:15.5014196Z   ID = /subscriptions/***/resourceGroups/acctestRG-5368334345066913088/providers/Microsoft.Web/serverfarms/acctestASP-5368334345066913088
+2018-12-13T05:05:15.5014413Z   provider = provider.azurerm
+2018-12-13T05:05:15.5014535Z   kind = Windows
+2018-12-13T05:05:15.5014672Z   location = westeurope
+2018-12-13T05:05:15.5014794Z   maximum_number_of_workers = 10
+2018-12-13T05:05:15.5015163Z   name = acctestASP-5368334345066913088
+2018-12-13T05:05:15.5015345Z   properties.# = 1
+2018-12-13T05:05:15.5015470Z   properties.0.app_service_environment_id = 
+2018-12-13T05:05:15.5015594Z   properties.0.per_site_scaling = false
+2018-12-13T05:05:15.5015735Z   properties.0.reserved = false
+2018-12-13T05:05:15.5016104Z   resource_group_name = acctestRG-5368334345066913088
+2018-12-13T05:05:15.5016290Z   sku.# = 1
+2018-12-13T05:05:15.5016412Z   sku.0.capacity = 1
+2018-12-13T05:05:15.5016532Z   sku.0.size = S1
+2018-12-13T05:05:15.5016670Z   sku.0.tier = Standard
+2018-12-13T05:05:15.5016798Z   tags.% = 0
+2018-12-13T05:05:15.5016926Z 
+2018-12-13T05:05:15.5017042Z   Dependencies:
+2018-12-13T05:05:15.5017159Z     azurerm_resource_group.test
+2018-12-13T05:05:15.5017296Z azurerm_resource_group.test:
+2018-12-13T05:05:15.5017767Z   ID = /subscriptions/***/resourceGroups/acctestRG-5368334345066913088
+2018-12-13T05:05:15.5018023Z   provider = provider.azurerm
+2018-12-13T05:05:15.5018152Z   location = westeurope
+2018-12-13T05:05:15.5018519Z   name = acctestRG-5368334345066913088
+2018-12-13T05:05:15.5018706Z   tags.% = 0
+2018-12-13T05:05:15.5018835Z 2018/12/13 05:04:20 [INFO] terraform: building graph: GraphTypeApply
+2018-12-13T05:05:15.5018989Z 2018/12/13 05:04:20 Testing if Service Principal / Client Certificate is applicable for Authentication..
+2018-12-13T05:05:15.5019132Z 2018/12/13 05:04:20 Testing if Service Principal / Client Secret is applicable for Authentication..
+2018-12-13T05:05:15.5019288Z 2018/12/13 05:04:20 Using Service Principal / Client Secret for Authentication
+2018-12-13T05:05:15.5019437Z 2018/12/13 05:05:15 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:05:15.5019582Z 2018/12/13 05:05:15 [INFO] terraform: building graph: GraphTypeRefresh
+2018-12-13T05:05:15.5019732Z 2018/12/13 05:05:15 [INFO] terraform: building graph: GraphTypePlanDestroy
+2018-12-13T05:05:15.5020107Z --- PASS: TestAccAzureRMAppService_appSettings (127.71s)
+2018-12-13T05:05:15.5020289Z PASS
+2018-12-13T09:55:52.6139189Z ##[debug]Exit code 0 received from tool '/bin/bash'
+2018-12-13T09:55:52.6145488Z ##[debug]STDIO streams have closed for tool '/bin/bash'
+2018-12-13T09:55:52.6161227Z ##[debug]task result: Succeeded
+2018-12-13T09:55:52.6164380Z ##[debug]Processed: ##vso[task.complete result=Succeeded;done=true;]
+2018-12-13T09:55:52.6182727Z ##[section]Finishing: Run test in parallel
