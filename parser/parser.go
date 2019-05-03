@@ -60,6 +60,7 @@ type Package struct {
 // Test contains the results of a single test.
 type Test struct {
 	Name              string         `json:"name"`
+	ResourceGroup     string         `json:"rg"`
 	Time              float64        `json:"time"`
 	TestOverhead      float64        `json:"overhead"`
 	CreateTime        float64        `json:"createtime"`
@@ -86,6 +87,10 @@ var (
 	regexIsGraphTypeApply        = regexp.MustCompile(`^(\d{4})/(\d{2})/(\d{2}).(\d{2}):(\d{2}):(\d{2}).(\SINFO\S).(terraform:.building.graph:.GraphTypeApply)`)
 	regexIsGraphTypePlan         = regexp.MustCompile(`^(\d{4})/(\d{2})/(\d{2}).(\d{2}):(\d{2}):(\d{2}).(\SINFO\S).(terraform:.building.graph:.GraphTypePlan)`)
 	regexIsGraphTypeDestroy      = regexp.MustCompile(`^(\d{4})/(\d{2})/(\d{2}).(\d{2}):(\d{2}):(\d{2}).(\SINFO\S).(terraform:.building.graph:.GraphTypePlanDestroy)`)
+	//Parse various naming formats for resouce group name
+	regexResourceGroupNameAccOne = regexp.MustCompile(`([aA]cc[tT]est-[rR][gG]-\d*)`)
+	regexResourceGroupNameAccTwo = regexp.MustCompile(`([aA]cc[tT]est[rR][gG]-\d*)`)
+	regexResourceGroupNamePerf   = regexp.MustCompile(`([pP]erf[tT]est[rR][gG]-\d*)`)
 )
 
 // Console write debug output
@@ -155,6 +160,7 @@ func Parse(r io.Reader, pkgName string, parseAzure bool) (*Report, error) {
 			cur = strings.TrimSpace(line[8:])
 			tests = append(tests, &Test{
 				Name:              cur,
+				ResourceGroup:     "",
 				Result:            FAIL,
 				Time:              0.0,
 				TestOverhead:      0.0,
@@ -313,6 +319,17 @@ func processCreateDestroySections(test *Test) *Test {
 			for i := txtIndex; i < len(test.CreateText); i++ {
 				linesProcessed = i
 
+				//Look for the resource group name if we haven't already found it...
+				if test.ResourceGroup == "" {
+					if matches := regexResourceGroupNameAccOne.FindStringSubmatch(test.CreateText[i]); len(matches) > 0 {
+						test.ResourceGroup = matches[0]
+					} else if matches := regexResourceGroupNameAccTwo.FindStringSubmatch(test.CreateText[i]); len(matches) > 0 {
+						test.ResourceGroup = matches[0]
+					} else if matches := regexResourceGroupNamePerf.FindStringSubmatch(test.CreateText[i]); len(matches) > 0 {
+						test.ResourceGroup = matches[0]
+					}
+				}
+
 				if matches := regexIsCreateUpdateOrDestroy.FindStringSubmatch(test.CreateText[i]); len(matches) > 0 {
 
 					// Now I need to see if this Resource time already has an action of this type
@@ -416,6 +433,7 @@ func processCreateDestroySections(test *Test) *Test {
 	Console.WriteLine("------------------------------------------------")
 	Console.WriteLine("")
 	Console.Write("TEST             : %s\n", test.Name)
+	Console.Write("Resource Group   : %s\n", test.ResourceGroup)
 	Console.Write("Time             : %v\n", time.Duration(test.Time)*time.Second)
 	Console.Write("CreateTime       : %v\n", time.Duration(test.CreateTime))
 
@@ -582,6 +600,7 @@ func (u *Test) MarshalJSON() ([]byte, error) {
 	type Alias Test
 	return json.Marshal(&struct {
 		Name              string         `json:"name"`
+		ResourceGroup     string         `json:"rg"`
 		Time              string         `json:"time"`
 		TestOverhead      string         `json:"overhead"`
 		CreateTime        string         `json:"createtime"`
@@ -595,6 +614,7 @@ func (u *Test) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{
 		Name:              u.Name,
+		ResourceGroup:     u.ResourceGroup,
 		Time:              helper.FormatTime(u.Time),
 		TestOverhead:      helper.FormatTime(u.TestOverhead / float64(time.Second)),
 		CreateTime:        helper.FormatTime(u.CreateTime / float64(time.Second)),

@@ -35,6 +35,7 @@ type JUnitTestCase struct {
 	XMLName        xml.Name          `xml:"testcase"`
 	Classname      string            `xml:"classname,attr"`
 	Name           string            `xml:"name,attr"`
+	ResourceGroup  string            `xml:"rg,attr"`
 	TotalTime      string            `xml:"time,attr"`
 	CreationTime   string            `xml:"creationtime,attr"`
 	DestroyTime    string            `xml:"destroytime,attr"`
@@ -101,6 +102,7 @@ func JUnitReportXML(report *parser.Report, noXMLHeader bool, goVersion string, w
 			testCase := JUnitTestCase{
 				Classname:      classname,
 				Name:           test.Name,
+				ResourceGroup:  test.ResourceGroup,
 				TotalTime:      helper.FormatTime(test.Time),
 				CreationTime:   helper.FormatTime(0),
 				DestroyTime:    helper.FormatTime(0),
